@@ -1,0 +1,38 @@
+version: '2'
+services:
+  application:
+    image: busybox:latest
+    volumes:
+      - $PWD:/var/www
+  nginx:
+    build: docker/nginx
+    ports:
+      - "9090:80"
+    volumes_from:
+      - application
+    depends_on:
+      - php-fpm
+  php-fpm:
+    build: docker/php
+    volumes:
+      - ~/.composer:/root/.composer
+    volumes_from:
+      - application
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_HOST=${MYSQL_HOST}
+    depends_on:
+      - mariadb
+  mariadb:
+    build: docker/mariadb
+    ports:
+      - "3306:3306"
+    volumes:
+      - /var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
