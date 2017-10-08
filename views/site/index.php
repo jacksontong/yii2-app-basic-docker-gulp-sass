@@ -3,6 +3,10 @@
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
+//todo: remove dump data
+\yii\helpers\VarDumper::dump(Yii::$app->getRequest()->getUserIP(),10,1);
+//todo: remove dump data
+\yii\helpers\VarDumper::dump(gethostbyname('docker.for.mac.localhost'),10,1);
 ?>
 <div class="site-index">
 
