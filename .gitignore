@@ -28,5 +28,6 @@ phpunit.phar
 
 tests/_output/*
 tests/_support/_generated
+/node_modules
 
 .env
