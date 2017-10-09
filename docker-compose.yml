@@ -7,7 +7,7 @@ services:
   nginx:
     build: docker/nginx
     ports:
-      - "9090:80"
+      - "${NGINX_EXPOSE_PORT}:80"
     volumes_from:
       - application
     depends_on:
@@ -30,11 +30,15 @@ services:
   mariadb:
     build: docker/mariadb
     ports:
-      - "3306:3306"
+      - "${MYSQL_EXPOSE_PORT}:3306"
     volumes:
-      - /var/lib/mysql
+      - data-volume:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_USER=${MYSQL_USER}
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_TEST_DATABASE=${MYSQL_TEST_DATABASE}
+
+volumes:
+  data-volume:
