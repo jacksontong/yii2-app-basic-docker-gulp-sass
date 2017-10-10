@@ -1,6 +1,6 @@
 {
-    "name": "yiisoft/yii2-app-basic",
-    "description": "Yii 2 Basic Project Template",
+    "name": "jacksontong/yii2-app-basic-docker-gulp-sass",
+    "description": "Yii 2 Basic Project Template with Docker, Gulp and Sass support",
     "keywords": ["yii2", "framework", "basic", "project template"],
     "homepage": "http://www.yiiframework.com/",
     "type": "project",
