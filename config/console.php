@@ -10,7 +10,7 @@ $config = [
     'controllerNamespace' => 'app\commands',
     'components' => [
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => 'yii\redis\Cache',
         ],
         'log' => [
             'targets' => [
@@ -21,6 +21,7 @@ $config = [
             ],
         ],
         'db' => $db,
+        'redis' => require(__DIR__ . '/redis.php'),
     ],
     'params' => $params,
     /*

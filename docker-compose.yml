@@ -1,9 +1,15 @@
 version: '2'
 services:
+
+### Applications Code Container #############################
+
   application:
     image: busybox:latest
     volumes:
       - $PWD:/var/www
+
+### Workspace Utilities Container ###########################
+
   nginx:
     build: docker/nginx
     ports:
@@ -12,6 +18,9 @@ services:
       - application
     depends_on:
       - php-fpm
+
+### PHP-FPM Container #######################################
+
   php-fpm:
     build: docker/php
     volumes:
@@ -25,8 +34,12 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_HOST=${MYSQL_HOST}
       - LOCAL_IP=${LOCAL_IP}
+      - REDIS_HOST=${REDIS_HOST}
     depends_on:
       - mariadb
+
+### MariaDB Container #######################################
+
   mariadb:
     build: docker/mariadb
     ports:
@@ -40,5 +53,17 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_TEST_DATABASE=${MYSQL_TEST_DATABASE}
 
+### Redis Container #######################################
+
+  redis:
+    build: docker/redis
+    ports:
+      - "${REDIS_EXPOSE_PORT}:6379"
+    volumes:
+      - redis-volume:/data
+
+### Volumes Setup #############################################
+
 volumes:
   data-volume:
+  redis-volume:

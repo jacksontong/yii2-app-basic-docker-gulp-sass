@@ -12,7 +12,10 @@ $config = [
             'cookieValidationKey' => 'DeuV44Ygufd363hHwV8uMZJSJyT9KXj4',
         ],
         'cache' => [
-            'class' => 'yii\caching\FileCache',
+            'class' => 'yii\redis\Cache',
+        ],
+        'session' => [
+            'class' => 'yii\redis\Session',
         ],
         'user' => [
             'identityClass' => 'app\models\User',
@@ -38,6 +41,7 @@ $config = [
             ],
         ],
         'db' => require(__DIR__ . '/db.php'),
+        'redis' => require(__DIR__ . '/redis.php'),
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
