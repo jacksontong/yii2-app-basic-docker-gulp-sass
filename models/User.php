@@ -21,6 +21,8 @@ use yii\web\IdentityInterface;
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
+ *
+ * @property-red string $full_name
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -31,7 +33,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return '{{%user}}';
+        return '{{%users}}';
     }
 
     /**
@@ -195,5 +197,13 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     * @return string full name of the user
+     */
+    public function getFull_name()
+    {
+        return "{$this->first_name} {$this->last_name}";
     }
 }

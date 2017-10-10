@@ -23,17 +23,25 @@ class UserTest extends \Codeception\Test\Unit
     public function testFindUserById()
     {
         expect_that($user = User::findIdentity(1));
-        expect($user->email)->equals('nicole.paucek@schultz.info');
+        expect($user->email)->equals('tongtoan2704@gmail.com');
 
         expect_not(User::findIdentity(999));
     }
 
     public function testFindUserByEmail()
     {
-        expect_that($user = User::findByEmail('nicole.paucek@schultz.info'));
+        expect_that($user = User::findByEmail('tongtoan2704@gmail.com'));
         expect_not(User::findByEmail('not-admin@gmail.com'));
 
         return $user;
+    }
+
+    /**
+     * @expectedException \yii\base\NotSupportedException
+     */
+    public function testFindUserByAccessToken()
+    {
+        $user = User::findIdentityByAccessToken('100-token');
     }
 
     /**

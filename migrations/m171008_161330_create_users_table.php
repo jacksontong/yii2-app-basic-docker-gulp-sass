@@ -18,7 +18,7 @@ class m171008_161330_create_users_table extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable('{{%user}}', [
+        $this->createTable('{{%users}}', [
             'id' => $this->primaryKey(),
             'first_name' => $this->string()->notNull(),
             'last_name' => $this->string()->notNull(),
@@ -37,6 +37,6 @@ class m171008_161330_create_users_table extends Migration
      */
     public function down()
     {
-        $this->dropTable('user');
+        $this->dropTable('{{%users}}');
     }
 }

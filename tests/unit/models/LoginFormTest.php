@@ -56,7 +56,7 @@ class LoginFormTest extends \Codeception\Test\Unit
     public function testLoginCorrect()
     {
         $this->model = new LoginForm([
-            'email' => 'nicole.paucek@schultz.info',
+            'email' => 'tongtoan2704@gmail.com',
             'password' => 'password_0',
         ]);
 
