@@ -7,6 +7,20 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'components' => [
+        'assetManager' => [
+            'bundles' => [
+                'yii\bootstrap\BootstrapAsset' => false,
+                'yii\validators\ValidationAsset' => false,
+                'yii\web\YiiAsset' => false,
+                'yii\widgets\ActiveFormAsset' => false,
+                'yii\bootstrap\BootstrapPluginAsset' => false,
+                'yii\web\JqueryAsset' => false,
+                //'yii\authclient\widgets\AuthChoiceAsset' => false, //authchoice.js
+                //'yii\authclient\widgets\AuthChoiceStyleAsset' => false, //authchoice.css
+            ],
+            'linkAssets' => true,
+            'appendTimestamp' => true,
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'DeuV44Ygufd363hHwV8uMZJSJyT9KXj4',
