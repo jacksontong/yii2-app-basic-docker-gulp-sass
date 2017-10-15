@@ -13,12 +13,21 @@ sudo: false
 
 env:
   - TRAVIS_NODE_VERSION="8"
+  - MYSQL_TEST_DATABASE="yii2_basic_tests"
+  - MYSQL_USER="travis"
+  - MYSQL_PASSWORD=""
+
+services:
+  - mysql
 
 # cache vendor dirs
 cache:
   directories:
     - $HOME/.composer/cache
     - node_modules
+
+before_install:
+  - mysql -e 'CREATE DATABASE $MYSQL_TEST_DATABASE;'
 
 install:
   - travis_retry composer self-update && composer --version
