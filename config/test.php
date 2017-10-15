@@ -9,6 +9,7 @@ return [
     'id' => 'basic-tests',
     'basePath' => dirname(__DIR__),    
     'language' => 'en-US',
+    'aliases' => require(__DIR__ . '/aliases.php'),
     'components' => [
         'db' => $dbParams,
         'mailer' => [
