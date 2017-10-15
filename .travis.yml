@@ -12,10 +12,11 @@ php:
 sudo: false
 
 env:
-  - TRAVIS_NODE_VERSION="8"
-  - MYSQL_TEST_DATABASE="yii2_basic_tests"
-  - MYSQL_USER="travis"
-  - MYSQL_PASSWORD=""
+  global:
+    - TRAVIS_NODE_VERSION="8"
+    - MYSQL_TEST_DATABASE="yii2_basic_tests"
+    - MYSQL_USER="travis"
+    - MYSQL_PASSWORD=""
 
 services:
   - mysql
