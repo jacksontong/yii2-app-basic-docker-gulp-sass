@@ -14,16 +14,16 @@ PATHS:
   src: "assets/src"
   # Paths to fonts
   fonts:
-    - "vendor/bower/font-awesome/fonts/**/*"
-    - "vendor/bower/bootstrap/fonts/**/*"
+    - "vendor/bower-asset/font-awesome/fonts/**/*"
+    - "vendor/bower-asset/bootstrap/fonts/**/*"
   # Paths to Sass libraries, which can then be loaded with @import
   sass:
-    - "vendor/bower/bootstrap-sass/assets/stylesheets"
-    - "vendor/bower/font-awesome/scss"
+    - "vendor/bower-asset/bootstrap-sass/assets/stylesheets"
+    - "vendor/bower-asset/font-awesome/scss"
   # Paths to JavaScript libraries, which are compined into one file
   javascript:
-    - "vendor/bower/jquery/dist/jquery.js"
-    - "vendor/bower/bootstrap-sass/assets/javascripts/bootstrap.js"
+    - "vendor/bower-asset/jquery/dist/jquery.js"
+    - "vendor/bower-asset/bootstrap-sass/assets/javascripts/bootstrap.js"
     - "vendor/yiisoft/yii2/assets/yii.js"
     - "vendor/yiisoft/yii2/assets/yii.validation.js"
     - "vendor/yiisoft/yii2/assets/yii.activeForm.js"
