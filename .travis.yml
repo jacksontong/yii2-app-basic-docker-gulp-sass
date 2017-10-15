@@ -11,6 +11,9 @@ php:
 # faster builds on new travis setup not using sudo
 sudo: false
 
+env:
+  - TRAVIS_NODE_VERSION="8"
+
 # cache vendor dirs
 cache:
   directories:
@@ -19,6 +22,10 @@ cache:
 install:
   - travis_retry composer self-update && composer --version
   - travis_retry composer update --dev --prefer-dist --no-interaction
+  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+  - npm install -g bower gulp
+  - npm install
+  - npm run build
 # setup application:
   - |
     sed -i "s/'cookieValidationKey' => ''/'cookieValidationKey' => 'testkey'/" config/web.php
