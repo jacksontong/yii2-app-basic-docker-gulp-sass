@@ -79,6 +79,17 @@ You can then access the application through the following URL:
 http://localhost/basic/web/
 ~~~
 
+### Run from Docker
+
+```console
+cp .env-example .env
+docker-compose up
+```
+
+~~~
+// port number from .env file
+http://localhost:[NGINX_EXPOSE_PORT]
+~~~
 
 CONFIGURATION
 -------------
